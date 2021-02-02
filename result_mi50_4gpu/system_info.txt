@@ -1,0 +1,14 @@
+benchmark start : 2021/02/02 09:34:27
+system_configs
+
+uname_result(system='Linux', node='aa591c33a553', release='5.4.0-60-generic', version='#67~18.04.1-Ubuntu SMP Tue Jan 5 22:01:05 UTC 2021', machine='x86_64', processor='x86_64')
+                     scpufreq(current=2806.909351562499, min=1500.0, max=2250.0)
+                    cpu_count: 128
+                    memory_available: 533470326784
+gpu_configs
+
+Number of GPUs on current device : 8
+CUDA Version : None
+Cudnn Version : 2009000
+Device Name : Device 66a1
+benchmark end : 2021/02/02 09:47:59
