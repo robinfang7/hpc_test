@@ -56,7 +56,7 @@ class RandomDataset(Dataset):
         return self.len
 
 rand_loader = DataLoader(dataset=RandomDataset( args.BATCH_SIZE*(args.WARM_UP + args.NUM_TEST)),
-                         batch_size=args.BATCH_SIZE, shuffle=False,num_workers=8)
+        batch_size=args.BATCH_SIZE, shuffle=False,num_workers=1)
 def train(precision='single'):
     """use fake image for training speed test"""
     target = torch.LongTensor(args.BATCH_SIZE).random_(args.NUM_CLASSES).cuda()
