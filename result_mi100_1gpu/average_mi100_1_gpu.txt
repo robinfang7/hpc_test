@@ -1,0 +1,146 @@
+benchmark start : 2021/02/03 05:20:47
+Number of GPUs on current device : 4
+CUDA Version : None
+Cudnn Version : 2009000
+Device Name : Device 738c
+uname_result(system='Linux', node='137a86d85375', release='5.4.0-53-generic', version='#59~18.04.1-Ubuntu SMP Wed Oct 21 12:14:56 UTC 2020', machine='x86_64', processor='x86_64')
+                     scpufreq(current=2818.3834531250004, min=1500.0, max=2250.0)
+                    cpu_count: 128
+                    memory_available: 533760425984
+Benchmarking Training float precision type resnet18
+resnet18 model average train time : 16.03982925415039ms
+resnet18 model average gap time : 0.9226322174072266ms
+Benchmarking Training float precision type resnet34
+resnet34 model average train time : 27.61160373687744ms
+resnet34 model average gap time : 1.0546159744262695ms
+Benchmarking Training float precision type resnet50
+resnet50 model average train time : 43.464651107788086ms
+resnet50 model average gap time : 1.3437986373901367ms
+Benchmarking Training float precision type resnet101
+resnet101 model average train time : 74.84846591949463ms
+resnet101 model average gap time : 1.4960670471191406ms
+Benchmarking Training float precision type resnet152
+resnet152 model average train time : 108.15207958221436ms
+resnet152 model average gap time : 1.487259864807129ms
+Benchmarking Training float precision type resnext50_32x4d
+resnext50_32x4d model average train time : 47.346177101135254ms
+resnext50_32x4d model average gap time : 1.4768695831298828ms
+Benchmarking Training float precision type resnext101_32x8d
+resnext101_32x8d model average train time : 120.86398601531982ms
+resnext101_32x8d model average gap time : 1.5294122695922852ms
+Benchmarking Training float precision type wide_resnet50_2
+wide_resnet50_2 model average train time : 73.85819435119629ms
+wide_resnet50_2 model average gap time : 1.2775611877441406ms
+Benchmarking Training float precision type wide_resnet101_2
+wide_resnet101_2 model average train time : 127.63944625854492ms
+wide_resnet101_2 model average gap time : 1.5376996994018555ms
+Benchmarking Inference float precision type resnet18
+resnet18 model average inference time : 5.033373832702637ms
+Benchmarking Inference float precision type resnet34
+resnet34 model average inference time : 7.494792938232422ms
+Benchmarking Inference float precision type resnet50
+resnet50 model average inference time : 11.911349296569824ms
+Benchmarking Inference float precision type resnet101
+resnet101 model average inference time : 18.532161712646484ms
+Benchmarking Inference float precision type resnet152
+resnet152 model average inference time : 25.63833236694336ms
+Benchmarking Inference float precision type resnext50_32x4d
+resnext50_32x4d model average inference time : 14.115266799926758ms
+Benchmarking Inference float precision type resnext101_32x8d
+resnext101_32x8d model average inference time : 37.560577392578125ms
+Benchmarking Inference float precision type wide_resnet50_2
+wide_resnet50_2 model average inference time : 23.27117919921875ms
+Benchmarking Inference float precision type wide_resnet101_2
+wide_resnet101_2 model average inference time : 39.78745937347412ms
+Benchmarking Training half precision type resnet18
+MIOpen(HIP): Warning [GetValues] Perf db record is obsolete or corrupt: 64,32,2,32,32,8,0,0. Performance may degrade.
+resnet18 model average train time : 15.755271911621094ms
+resnet18 model average gap time : 7.230324745178223ms
+Benchmarking Training half precision type resnet34
+resnet34 model average train time : 25.744166374206543ms
+resnet34 model average gap time : 7.367057800292969ms
+Benchmarking Training half precision type resnet50
+resnet50 model average train time : 39.628963470458984ms
+resnet50 model average gap time : 7.4930524826049805ms
+Benchmarking Training half precision type resnet101
+resnet101 model average train time : 69.65332984924316ms
+resnet101 model average gap time : 7.614355087280273ms
+Benchmarking Training half precision type resnet152
+resnet152 model average train time : 100.35994529724121ms
+resnet152 model average gap time : 7.863430976867676ms
+Benchmarking Training half precision type resnext50_32x4d
+resnext50_32x4d model average train time : 39.93759632110596ms
+resnext50_32x4d model average gap time : 7.925915718078613ms
+Benchmarking Training half precision type resnext101_32x8d
+resnext101_32x8d model average train time : 85.51867008209229ms
+resnext101_32x8d model average gap time : 8.018107414245605ms
+Benchmarking Training half precision type wide_resnet50_2
+wide_resnet50_2 model average train time : 55.801873207092285ms
+wide_resnet50_2 model average gap time : 7.746796607971191ms
+Benchmarking Training half precision type wide_resnet101_2
+wide_resnet101_2 model average train time : 87.11825370788574ms
+wide_resnet101_2 model average gap time : 7.877016067504883ms
+Benchmarking Inference half precision type resnet18
+resnet18 model average inference time : 5.244693756103516ms
+Benchmarking Inference half precision type resnet34
+resnet34 model average inference time : 7.529044151306152ms
+Benchmarking Inference half precision type resnet50
+resnet50 model average inference time : 9.714131355285645ms
+Benchmarking Inference half precision type resnet101
+resnet101 model average inference time : 16.533451080322266ms
+Benchmarking Inference half precision type resnet152
+resnet152 model average inference time : 23.3408260345459ms
+Benchmarking Inference half precision type resnext50_32x4d
+resnext50_32x4d model average inference time : 9.939255714416504ms
+Benchmarking Inference half precision type resnext101_32x8d
+resnext101_32x8d model average inference time : 20.332984924316406ms
+Benchmarking Inference half precision type wide_resnet50_2
+wide_resnet50_2 model average inference time : 14.562878608703613ms
+Benchmarking Inference half precision type wide_resnet101_2
+wide_resnet101_2 model average inference time : 23.070998191833496ms
+Benchmarking Training double precision type resnet18
+resnet18 model average train time : 165.7816743850708ms
+resnet18 model average gap time : 7.201895713806152ms
+Benchmarking Training double precision type resnet34
+resnet34 model average train time : 289.8750305175781ms
+resnet34 model average gap time : 7.6474761962890625ms
+Benchmarking Training double precision type resnet50
+resnet50 model average train time : 353.04473400115967ms
+resnet50 model average gap time : 7.723274230957031ms
+Benchmarking Training double precision type resnet101
+resnet101 model average train time : 563.1124544143677ms
+resnet101 model average gap time : 8.038582801818848ms
+Benchmarking Training double precision type resnet152
+resnet152 model average train time : 815.2316331863403ms
+resnet152 model average gap time : 8.703627586364746ms
+Benchmarking Training double precision type resnext50_32x4d
+resnext50_32x4d model average train time : 1743.1492614746094ms
+resnext50_32x4d model average gap time : 9.547715187072754ms
+Benchmarking Training double precision type resnext101_32x8d
+resnext101_32x8d model average train time : 3343.4439945220947ms
+resnext101_32x8d model average gap time : 11.44655704498291ms
+Benchmarking Training double precision type wide_resnet50_2
+wide_resnet50_2 model average train time : 486.22129917144775ms
+wide_resnet50_2 model average gap time : 7.96328067779541ms
+Benchmarking Training double precision type wide_resnet101_2
+wide_resnet101_2 model average train time : 884.8575305938721ms
+wide_resnet101_2 model average gap time : 8.275856971740723ms
+Benchmarking Inference double precision type resnet18
+resnet18 model average inference time : 72.51365184783936ms
+Benchmarking Inference double precision type resnet34
+resnet34 model average inference time : 145.56273460388184ms
+Benchmarking Inference double precision type resnet50
+resnet50 model average inference time : 130.6795072555542ms
+Benchmarking Inference double precision type resnet101
+resnet101 model average inference time : 252.49045372009277ms
+Benchmarking Inference double precision type resnet152
+resnet152 model average inference time : 370.56553840637207ms
+Benchmarking Inference double precision type resnext50_32x4d
+resnext50_32x4d model average inference time : 348.71216773986816ms
+Benchmarking Inference double precision type resnext101_32x8d
+resnext101_32x8d model average inference time : 1059.228014945984ms
+Benchmarking Inference double precision type wide_resnet50_2
+wide_resnet50_2 model average inference time : 192.09328174591064ms
+Benchmarking Inference double precision type wide_resnet101_2
+wide_resnet101_2 model average inference time : 387.3106813430786ms
+benchmark end : 2021/02/03 06:00:59
