@@ -17,7 +17,7 @@ torch.backends.cudnn.benchmark = True
 # If you check it using the profile tool, the cnn method such as winograd, fft, etc. is used for the first iteration and the best operation is selected for the device.
 
 
-MODEL_LIST = {models.resnet:models.resnet.__all__[1:]}
+MODEL_LIST = {models.resnet:models.resnet.__all__[3:4]}
 
 # MODEL_LIST = {
 #     models.mnasnet:models.mnasnet.__all__[1:],
@@ -158,10 +158,10 @@ if __name__ == '__main__':
         path=f'{folder_name}/{device_name}_{precision}_model_train_benchmark.csv'
         train_result_df.to_csv(path, index=False)
 
-        inference_result=inference(precision)
-        inference_result_df = pd.DataFrame(inference_result)
-        path=f'{folder_name}/{device_name}_{precision}_model_inference_benchmark.csv'
-        inference_result_df.to_csv(path, index=False)
+        #inference_result=inference(precision)
+        #inference_result_df = pd.DataFrame(inference_result)
+        #path=f'{folder_name}/{device_name}_{precision}_model_inference_benchmark.csv'
+        #inference_result_df.to_csv(path, index=False)
 
     now = datetime.datetime.now()
 
