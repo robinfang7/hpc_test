@@ -42,7 +42,7 @@ parser.add_argument('--NUM_CLASSES','-c', type=int, default=1000, required=False
 parser.add_argument('--NUM_GPU','-g', type=int, default=1, required=False, help='Num of gpus')
 parser.add_argument('--folder','-f', type=str, default='result', required=False, help='folder to save results')
 args = parser.parse_args()
-#args.BATCH_SIZE*=args.NUM_GPU
+args.BATCH_SIZE*=args.NUM_GPU
 class RandomDataset(Dataset):
 
     def __init__(self,  length):
@@ -56,7 +56,7 @@ class RandomDataset(Dataset):
         return self.len
 
 rand_loader = DataLoader(dataset=RandomDataset( args.BATCH_SIZE*(args.WARM_UP + args.NUM_TEST)),
-        batch_size=args.BATCH_SIZE, shuffle=False,num_workers=1)
+                         batch_size=args.BATCH_SIZE, shuffle=False,num_workers=1)
 def train(precision='single'):
     """use fake image for training speed test"""
     target = torch.LongTensor(args.BATCH_SIZE).random_(args.NUM_CLASSES).cuda()
