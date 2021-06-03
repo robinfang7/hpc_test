@@ -122,8 +122,8 @@ print("average of epoch time = %.2f " %(avg_time))
 print("Throuthput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
 print('-'*40) 
 
-model.save('model.h5')
+#model.save('model.h5')
 
-new_model = keras.models.load_model('model.h5')
+#new_model = keras.models.load_model('model.h5')
  
-new_model.evaluate(test_dataset)
+#new_model.evaluate(test_dataset)
