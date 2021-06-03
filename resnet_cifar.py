@@ -5,11 +5,20 @@ from tensorflow import keras
 from tensorflow.keras.callbacks import TensorBoard, LearningRateScheduler
 import time
 import resnet
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--num_gpus', type=int, default=2,
+                    help='input gpu number, default=2')
+parser.add_argument('--batch_size', type=int, default=128,
+                    help='input batch size, default=128')
+parser.add_argument('--num_epochs', type=int, default=60,
+                    help='input epoch, default=60')
+args = parser.parse_args()
 
-NUM_GPUS = 2
-BS_PER_GPU = 128
-NUM_EPOCHS = 10 #60
+NUM_GPUS = args.num_gpus # 2 
+BS_PER_GPU = args.batch_size # 128
+NUM_EPOCHS = args.num_epochs # 60
 
 HEIGHT = 32
 WIDTH = 32
