@@ -152,7 +152,7 @@ def conv_building_block(input_tensor,
                              tf.keras.regularizers.l2(L2_WEIGHT_DECAY),
                              bias_regularizer=
                              tf.keras.regularizers.l2(L2_WEIGHT_DECAY),
-                             name=conv_name_base + '2a')(input_tensor)
+                             name=conv_name_base + '2a')(x)
   x = tf.keras.layers.BatchNormalization(axis=bn_axis,
                                          name=bn_name_base + '2a',
                                          momentum=BATCH_NORM_DECAY,
