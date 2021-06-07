@@ -4,8 +4,10 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.callbacks import TensorBoard, LearningRateScheduler
 import time
-import resnet
+import resnet2
 import argparse
+from nvtx.plugins.tf.keras.layers import NVTXStart, NVTXEnd
+from nvtx.plugins.tf.keras.callbacks import NVTXCallback
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--num_gpus', type=int, default=2,
@@ -82,7 +84,7 @@ img_input = tf.keras.layers.Input(shape=input_shape)
 opt = keras.optimizers.SGD(learning_rate=0.1, momentum=0.9)
 
 if NUM_GPUS == 1:
-    model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
+    model = resnet2.resnet56(img_input=img_input, classes=NUM_CLASSES)
     model.compile(
               optimizer=opt,
               loss='sparse_categorical_crossentropy',
@@ -90,7 +92,7 @@ if NUM_GPUS == 1:
 else:
     mirrored_strategy = tf.distribute.MirroredStrategy()
     with mirrored_strategy.scope():
-      model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
+      model = resnet2.resnet56(img_input=img_input, classes=NUM_CLASSES)
       model.compile(
                 optimizer=opt,
                 loss='sparse_categorical_crossentropy',
@@ -107,16 +109,16 @@ tensorboard_callback = TensorBoard(
 lr_schedule_callback = LearningRateScheduler(schedule)
 
 time_callback = TimeHistory()
+nvtx_callback = NVTXCallback()
 
 model.fit(train_dataset,
           epochs=NUM_EPOCHS,
           validation_data=test_dataset,
           validation_freq=1,
-          callbacks=[tensorboard_callback, lr_schedule_callback, time_callback])
+          callbacks=[tensorboard_callback, lr_schedule_callback, time_callback, nvtx_callback])
 #model.evaluate(test_dataset)
 
 #print(time_callback.times) # print each epoch's runtime
-#print(sum(time_callback.times[1:]),len(time_callback.times[1:]))
 avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
 print('-'*40)
 print("average of epoch time = %.2f " %(avg_time)) 
@@ -124,7 +126,5 @@ print("Throuthput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
 print('-'*40) 
 
 #model.save('model.h5')
-
-#new_model = keras.models.load_model('model.h5')
- 
+#new_model = keras.models.load_model('model.h5') 
 #new_model.evaluate(test_dataset)
