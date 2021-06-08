@@ -118,7 +118,7 @@ model.fit(train_dataset,
           callbacks=[tensorboard_callback, lr_schedule_callback, time_callback, nvtx_callback])
 #model.evaluate(test_dataset)
 
-#print(time_callback.times) # print each epoch's runtime
+print(time_callback.times) # print each epoch's runtime
 avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
 print('-'*40)
 print("average of epoch time = %.2f " %(avg_time)) 

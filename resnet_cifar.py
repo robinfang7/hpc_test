@@ -59,13 +59,21 @@ def schedule(epoch):
 class TimeHistory(keras.callbacks.Callback):
     def on_train_begin(self, logs={}):
         self.times = []
+        self.batchtimes = []
 
     def on_epoch_begin(self, epoch, logs={}):
         self.epoch_time_start = time.time()
+        self.batchtime = []
+
+    def on_train_batch_begin(self, batch, log={}):
+        self.batchtime_start = time.time()
+
+    def on_train_batch_end(self, batch, log={}):
+        self.batchtime.append(time.time() - self.batchtime_start)
 
     def on_epoch_end(self, epoch, logs={}):
         self.times.append(time.time() - self.epoch_time_start)
-
+        self.batchtimes.append(self.batchtime)
 
 (x,y), (x_test, y_test) = keras.datasets.cifar10.load_data()
 
@@ -112,15 +120,19 @@ model.fit(train_dataset,
           epochs=NUM_EPOCHS,
           validation_data=test_dataset,
           validation_freq=1,
-          callbacks=[tensorboard_callback, lr_schedule_callback, time_callback])
+          callbacks=[time_callback])
 #model.evaluate(test_dataset)
 
-#print(time_callback.times) # print each epoch's runtime
+print("Epoch duration")
+print(time_callback.times) # print each epoch's runtime
+print("Batch duration of epoch")
+print(time_callback.batchtimes)
+
 #print(sum(time_callback.times[1:]),len(time_callback.times[1:]))
 avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
 print('-'*40)
 print("average of epoch time = %.2f " %(avg_time)) 
-print("Throuthput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
+print("Throughput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
 print('-'*40) 
 
 #model.save('model.h5')
