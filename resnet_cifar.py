@@ -116,24 +116,40 @@ lr_schedule_callback = LearningRateScheduler(schedule)
 
 time_callback = TimeHistory()
 
-model.fit(train_dataset,
+history = model.fit(train_dataset,
           epochs=NUM_EPOCHS,
           validation_data=test_dataset,
           validation_freq=1,
           callbacks=[time_callback])
 #model.evaluate(test_dataset)
 
-print("Epoch duration")
-print(time_callback.times) # print each epoch's runtime
-print("Batch duration of epoch")
-print(time_callback.batchtimes)
+avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
+
+# log accuracy and elasped time of epoch
+logfile = "gpu" + str(NUM_GPUS) + \
+          "_bs" + str(BS_PER_GPU) + \
+          "_epoch" + str(NUM_EPOCHS) 
+
+with open("%s.csv" % logfile, 'w') as f:
+    f.write("val_accuracy,epoch_elasped_time\n")
+    for i in range(NUM_EPOCHS):
+        f.write('%f,%.2f \r\n' % (history.history['val_sparse_categorical_accuracy'][i],
+                time_callback.times[i]))
+
+    f.write("average of epoch time = %.2f\n" %(avg_time))
+    f.write("Throughput = %.2f img/sec.\n" % (NUM_TRAIN_IMG / avg_time))
+
+#print("Epoch duration")
+#print(time_callback.times) # print each epoch's runtime
+#print("Batch duration of epoch")
+#print(time_callback.batchtimes)
 
 #print(sum(time_callback.times[1:]),len(time_callback.times[1:]))
-avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
-print('-'*40)
-print("average of epoch time = %.2f " %(avg_time)) 
-print("Throughput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
-print('-'*40) 
+#avg_time = sum(time_callback.times[1:])/len(time_callback.times[1:]) # remove first epoch
+#print('-'*40)
+#print("average of epoch time = %.2f " %(avg_time)) 
+#print("Throughput = %.2f img/sec." % (NUM_TRAIN_IMG / avg_time))
+#print('-'*40) 
 
 #model.save('model.h5')
 
